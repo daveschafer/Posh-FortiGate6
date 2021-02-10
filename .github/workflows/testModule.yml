@@ -41,4 +41,4 @@ jobs:
       - name: 3. Test Module
         shell: pwsh
         run: |
-          Test-ModuleManifest -Path "./Posh-FortiGate6"
+          Test-ModuleManifest -Path "./Posh-FortiGate6/Posh-FortiGate6.psd1"
