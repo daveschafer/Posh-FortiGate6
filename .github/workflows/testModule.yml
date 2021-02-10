@@ -25,7 +25,7 @@ jobs:
           Install-Module Posh-SSH
 
       # 3. Push 2 PSGallery
-      - name: 2. Test Module
+      - name: 2. Test ModuleManifest
         shell: pwsh
         run: |
           Test-ModuleManifest -Path "./Posh-FortiGate6/Posh-FortiGate6.psd1"
