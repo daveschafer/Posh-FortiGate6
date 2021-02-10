@@ -18,27 +18,14 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # 1. Create Release
-      - name: 1. Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          body_path: CHANGELOG.MD
-          draft: false
-          prerelease: false
-
-      - name: 2. Install required Module Dependencies from PSGallery
+      - name: 1. Install required Module Dependencies from PSGallery
         shell: pwsh
         run: |
           Set-PSRepository PSGallery -InstallationPolicy Trusted
           Install-Module Posh-SSH
 
       # 3. Push 2 PSGallery
-      - name: 3. Test Module
+      - name: 2. Test Module
         shell: pwsh
         run: |
           Test-ModuleManifest -Path "./Posh-FortiGate6/Posh-FortiGate6.psd1"
